@@ -1,0 +1,19 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: tomcat
+  namespace: tomcat
+  annotations:
+    fluxcd.io/automated: "false"
+    fluxcd.io/tag.chart-image: semver:~4.0
+spec:
+  releaseName: tomcat
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: tomcat
+    version: 0.3.0
+  values:
+    image:
+      repository: bitnami/tomcat
+      tag: 7.0
